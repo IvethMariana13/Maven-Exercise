@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="db_webstore" dynamic-insert="false" dynamic-update="false" mutable="true" name="PurchaseOrder" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="PurchaseOrder">
+        <id name="POrderId " type="java.lang.Integer">
+            <column name="POrderId"/>
+            <generator class="identity"/>
+        </id>
+        
+        <property generated="never" lazy="false" name="Date_Order" optimistic-lock="true" type="date" unique="false">
+            <column name="Date_Order" not-null="true" unique="true"/>
+        </property>
+        
+  
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="DeliveryAdId" optimistic-lock="true" sort="unsorted" table="DeliveryAddress">
+            <key on-delete="noaction">
+                <column name="DeliveryAdId" not-null="true"/>
+            </key>
+            <one-to-many class="DeliveryAddress " embed-xml="true" not-found="exception"/>
+        </set>
+        
+    </class>
+</hibernate-mapping>

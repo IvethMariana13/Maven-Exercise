@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="db_webstore" dynamic-insert="false" dynamic-update="false" mutable="true" name="City" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="Article">
+        <id name="CityId" type="java.lang.Integer">
+            <column name="CityId"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="Name" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="Name" not-null="true" unique="true"/>
+        </property>
+        
+       
+    </class>
+</hibernate-mapping>

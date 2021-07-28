@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="db_webstore" dynamic-insert="false" dynamic-update="false" mutable="true" name="Article" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="Article">
+        <id name="ArticleId" type="java.lang.Integer">
+            <column name="ArticleId"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="ArticleName" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="ArticleName" not-null="true" unique="true"/>
+        </property>
+        <property generated="never" lazy="false" name="Description" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="Description" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="Price" optimistic-lock="true" type="int" unique="false">
+            <column  name="Price" not-null="true" unique="true"/>
+        </property>
+        <property generated="never" lazy="false" name="Stock" optimistic-lock="true" type="double" unique="false">
+            <column  name="Stock" not-null="true"/>
+        </property>
+       
+    </class>
+</hibernate-mapping>

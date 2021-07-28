@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="db_webstore" dynamic-insert="false" dynamic-update="false" mutable="true" name="CreditCard" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="DeliveryAddress">
+        <id name="DeliveryAdId " type="java.lang.Integer">
+            <column name="DeliveryAdId"/>
+            <generator class="identity"/>
+        </id>
+        
+        <property generated="never" lazy="false" name="Street" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="Street" not-null="true" unique="true"/>
+        </property>
+        
+       <property generated="never" lazy="false" name="Number" optimistic-lock="true" type="int" unique="false">
+            <column  name="Number" not-null="true" unique="true"/>
+        </property>
+        
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="ClientId" optimistic-lock="true" sort="unsorted" table="Client">
+            <key on-delete="noaction">
+                <column name="ClientId" not-null="true"/>
+            </key>
+            <one-to-many class="Client" embed-xml="true" not-found="exception"/>
+        </set>
+        
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="CityId" optimistic-lock="true" sort="unsorted" table="City">
+            <key on-delete="noaction">
+                <column name="CityId" not-null="true"/>
+            </key>
+            <one-to-many class="City " embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="StateId" optimistic-lock="true" sort="unsorted" table="State">
+            <key on-delete="noaction">
+                <column name="StateId" not-null="true"/>
+            </key>
+            <one-to-many class="State " embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="CountryId" optimistic-lock="true" sort="unsorted" table="Country">
+            <key on-delete="noaction">
+                <column name="CountryId" not-null="true"/>
+            </key>
+            <one-to-many class="Country" embed-xml="true" not-found="exception"/>
+        </set>
+        
+    </class>
+</hibernate-mapping>
+        

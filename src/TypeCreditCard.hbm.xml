@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="db_webstore" dynamic-insert="false" dynamic-update="false" mutable="true" name="TypeCreditCard" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="Article">
+        <id name="TypeCardId" type="java.lang.Integer">
+            <column name="TypeCardId"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="Type" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="Type" not-null="true" unique="true"/>
+        </property>
+        
+       
+    </class>
+</hibernate-mapping>

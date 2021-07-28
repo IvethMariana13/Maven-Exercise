@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="db_webstore" dynamic-insert="false" dynamic-update="false" mutable="true" name="PurchaseArticle" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="PurchaseArticle">
+        <id name="PArticleId " type="java.lang.Integer">
+            <column name="PArticleId"/>
+            <generator class="identity"/>
+        </id>
+        
+     
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="ArticleId" optimistic-lock="true" sort="unsorted" table="Article">
+            <key on-delete="noaction">
+                <column name="ArticleId" not-null="true"/>
+            </key>
+            <one-to-many class="Article" embed-xml="true" not-found="exception"/>
+        </set>
+        
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="POrderId " optimistic-lock="true" sort="unsorted" table="PurchaseOrder">
+            <key on-delete="noaction">
+                <column name="POrderId " not-null="true"/>
+            </key>
+            <one-to-many class="PurchaseOrder" embed-xml="true" not-found="exception"/>
+        </set>
+        
+        
+    </class>
+</hibernate-mapping>

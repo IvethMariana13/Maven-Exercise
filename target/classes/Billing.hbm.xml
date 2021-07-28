@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="db_webstore" dynamic-insert="false" dynamic-update="false" mutable="true" name="CreditCard" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="Billing">
+        <id name="InvoceId " type="java.lang.Integer">
+            <column name="InvoceId"/>
+            <generator class="identity"/>
+        </id>
+        
+        <property generated="never" lazy="false" name="Amount" optimistic-lock="true" type="short" unique="false">
+            <column name="Amount" not-null="true" unique="true"/>
+        </property>
+        
+       <property generated="never" lazy="false" name="Date_Billing" optimistic-lock="true" type="date" unique="false">
+            <column name="Date_Billing" not-null="true" unique="true"/>
+        </property>
+        
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="POrderId " optimistic-lock="true" sort="unsorted" table="PurchaseOrder">
+            <key on-delete="noaction">
+                <column name="POrderId " not-null="true"/>
+            </key>
+            <one-to-many class="PurchaseOrder" embed-xml="true" not-found="exception"/>
+        </set>
+        
+        
+    </class>
+</hibernate-mapping>
